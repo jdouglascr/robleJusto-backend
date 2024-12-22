@@ -14,6 +14,7 @@ from pathlib import Path
 from datetime import timedelta
 from decouple import config
 import os
+import ast
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -93,7 +94,7 @@ DATABASES = {
         'PASSWORD': config('DB_PASSWORD', default='root'),
         'HOST': config('DB_HOST', default='localhost'),
         'PORT': config('DB_PORT', default=''),
-        'OPTIONS': config('DB_OPTIONS', default={'unix_socket': '/Applications/MAMP/tmp/mysql/mysql.sock'},cast=dict),
+        'OPTIONS': ast.literal_eval(config('DB_OPTIONS', default="{'unix_socket': '/Applications/MAMP/tmp/mysql/mysql.sock'}")),
     }
 }
 
