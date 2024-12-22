@@ -15,6 +15,11 @@ from datetime import timedelta
 from decouple import config
 import os
 import ast
+import logging
+
+# Configura el log
+logging.basicConfig(level=logging.DEBUG)
+logger = logging.getLogger(__name__)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -97,6 +102,15 @@ DATABASES = {
         'OPTIONS': ast.literal_eval(config('DB_OPTIONS', default="{'unix_socket': '/Applications/MAMP/tmp/mysql/mysql.sock'}")),
     }
 }
+
+# Log de las variables de conexión
+logger.debug("DB_ENGINE: %s", config('DB_ENGINE', default='django.db.backends.mysql'))
+logger.debug("DB_NAME: %s", config('DB_NAME', default='robleJusto'))
+logger.debug("DB_USER: %s", config('DB_USER', default='root'))
+logger.debug("DB_PASSWORD: %s", config('DB_PASSWORD', default='root'))
+logger.debug("DB_HOST: %s", config('DB_HOST', default='localhost'))
+logger.debug("DB_PORT: %s", config('DB_PORT', default=''))
+logger.debug("DB_OPTIONS: %s", ast.literal_eval(config('DB_OPTIONS', default="{'unix_socket': '/Applications/MAMP/tmp/mysql/mysql.sock'}")))
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
