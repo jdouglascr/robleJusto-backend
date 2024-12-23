@@ -84,7 +84,7 @@ class UsuarioAPIView(APIView):
                 request.data['password'] = usuario.password
             
             username = request.data.get('username')
-            if Usuario.objects.filter(username=username).exists():
+            if (Usuario.objects.filter(username=username).exists() and usuario.username != username):
                 return Response({'message': f'El Usuario {username} ya está registrado.'},status=status.HTTP_400_BAD_REQUEST)
 
             serializer = UsuarioSerializer(usuario, data=request.data, partial=True)
