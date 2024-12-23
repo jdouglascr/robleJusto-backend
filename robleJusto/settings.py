@@ -154,4 +154,5 @@ AUTH_USER_MODEL = 'api.Usuario'
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:4200",
+    "https://roblejusto.vercel.app",
 ]
