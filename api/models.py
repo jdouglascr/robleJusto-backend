@@ -41,7 +41,7 @@ class Chofer(models.Model):
     cuenta_bancaria = models.JSONField()
 
 class Maquinaria(models.Model):
-    patente = models.CharField(max_length=10, unique=True)
+    patente = models.CharField(max_length=6, unique=True)
     tipos = [
         ('Camión', 'Camión'),
         ('Carro de Arrastre', 'Carro de Arrastre')
